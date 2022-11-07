@@ -18,7 +18,7 @@ createFolder("project-dist/assets");
 function createFile(fileName) {
     fs.writeFile(`./06-build-page/project-dist/${fileName}`, "", err => {
         if (err) console.log(`Updated "${fileName}" is successfully!`)
-        // console.log(`Created "${fileName}" is successfully!`);
+        console.log(`Created "${fileName}" is successfully!`);
     });
 };
 createFile("index.html");
@@ -33,7 +33,7 @@ fs.readdir("./06-build-page/assets/", { encoding: "utf-8", withFileTypes: true }
 
             fs.copyFile(`./06-build-page/assets/${item.name}`, `./06-build-page/project-dist/assets/${item.name}`, err => {
                 if (err) console.log(err);
-                // console.log(`"${item.name}" has been copied or updated to "${item.name}"!`);
+                console.log(`"${item.name}" has been copied or updated to "${item.name}"!`);
             });
 
         } else if (elem.isDirectory()) {
@@ -45,7 +45,7 @@ fs.readdir("./06-build-page/assets/", { encoding: "utf-8", withFileTypes: true }
                 dirEntryList.forEach(item => {
                     fs.copyFile(`./06-build-page/assets/${elem.name}/${item.name}`, `./06-build-page/project-dist/assets/${elem.name}/${item.name}`, err => {
                         if (err) console.log(err);
-                        // console.log(`"${item.name}" has been copied or updated to "${elem.name}"!`);
+                        console.log(`"${item.name}" has been copied or updated to "${elem.name}"!`);
                     });
                 });
             });
