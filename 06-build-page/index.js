@@ -1,18 +1,13 @@
 const fs = require("fs");
 
 function createFolder(folderName) {
-    fs.mkdir(`./06-build-page/${folderName}`, error => {
-        if (error) console.log(`"${folderName.split("/")[folderName.split("/").length - 1]}" already created!`);
-    });
-    return folderName;
+    fs.mkdir(`./06-build-page/${folderName}`, error => {});
 };
 createFolder("project-dist");
 createFolder("project-dist/assets");
 
 function createFile(fileName) {
-    fs.writeFile(`./06-build-page/project-dist/${fileName}`, "", err => {
-        if (err) console.log(err);
-    });
+    fs.writeFile(`./06-build-page/project-dist/${fileName}`, "", err => {});
 };
 createFile("index.html");
 createFile("style.css");
@@ -24,10 +19,7 @@ fs.readdir("./06-build-page/assets/", { encoding: "utf-8", withFileTypes: true }
 
         if (elem.isFile()) {
 
-            fs.copyFile(`./06-build-page/assets/${item.name}`, `./06-build-page/project-dist/assets/${item.name}`, err => {
-                if (err) console.log(err);
-                // console.log(`"${item.name}" has been copied or updated to "${item.name}"!`);
-            });
+            fs.copyFile(`./06-build-page/assets/${item.name}`, `./06-build-page/project-dist/assets/${item.name}`, err => {});
 
         } else if (elem.isDirectory()) {
 
