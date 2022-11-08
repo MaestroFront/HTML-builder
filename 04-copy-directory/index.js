@@ -9,7 +9,6 @@ function createNewFolder(folderName) {
         }
     });
 };
-createNewFolder("files-copy");
 
 function deleteFiles(path) {
     fs.readdir(path, { encoding: "utf-8", withFileTypes: true }, (error, dirEntryList) => {
@@ -26,6 +25,7 @@ function deleteFiles(path) {
 };
 
 function copyDir(pathFrom, pathTo) {
+    createNewFolder("files-copy");
     deleteFiles("./04-copy-directory/files-copy/");
     fs.readdir("./04-copy-directory/files", { encoding: "utf-8", withFileTypes: true }, (error, dirEntryList) => {
         if (error) console.log(error);
