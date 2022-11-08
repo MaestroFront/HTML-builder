@@ -11,7 +11,22 @@ function createNewFolder(folderName) {
 };
 createNewFolder("files-copy");
 
+function deleteFiles(path) {
+    fs.readdir(path, { encoding: "utf-8", withFileTypes: true }, (error, dirEntryList) => {
+
+        if (error) throw error;
+        dirEntryList.forEach(dirent => {
+    
+            fs.unlink(`${path}${dirent.name}`, err => {
+                if (err) throw err;
+            });
+    
+        });
+    });
+};
+
 function copyDir(pathFrom, pathTo) {
+    deleteFiles("./04-copy-directory/files-copy/");
     fs.readdir("./04-copy-directory/files", { encoding: "utf-8", withFileTypes: true }, (error, dirEntryList) => {
         if (error) console.log(error);
         dirEntryList.forEach(item => {
