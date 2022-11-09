@@ -9,7 +9,7 @@ function returnName(direntName) {
     return direntName;
 };
 
-function returnResolutionFile(direntName) {
+function resolutionFile(direntName) {
     direntName = direntName.split(".");
     return direntName[direntName.length - 1];
 };
@@ -23,7 +23,7 @@ fs.readdir(`${path}`, { encoding: "utf-8", withFileTypes: true }, (error, dirEnt
 
             if (err) throw err;
             if (dirent_1.isFile()) {
-                console.log(returnName(dirent_1.name) + " - " + returnResolutionFile(dirent_1.name) + " - " + (stats.size / 1024).toFixed(2) + "kb");
+                console.log(returnName(dirent_1.name) + " - " + resolutionFile(dirent_1.name) + " - " + (stats.size / 1024).toFixed(2) + "kb");
             };
         });
     });
